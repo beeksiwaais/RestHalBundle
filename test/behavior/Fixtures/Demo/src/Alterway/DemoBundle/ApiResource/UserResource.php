@@ -17,8 +17,8 @@ class UserResource extends Resource
 
     protected function prepare()
     {
-        $this->addLink('next', '/users?page=2');
-        $this->addLink('search', '/users?id={user_id}');
+        $this->addLink('detail', 'demo.user.detail', array('id' => 1));
+        $this->addLink('search', 'demo.user.search', array('id' => 1));
     }
 
     protected function generateUri()
