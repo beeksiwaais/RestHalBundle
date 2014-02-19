@@ -28,7 +28,7 @@ abstract class Resource implements ResourceInterface
         $generatedRoute = $this->generate($route, $routeParams);
         $methods = $this->router->getRouteCollection()->get($route)->getMethods();
         $this->hal->addLink(
-            $rel,a
+            $rel,
             $generatedRoute,
             null,
             array_merge($attributes, array('method' => reset($methods)))
