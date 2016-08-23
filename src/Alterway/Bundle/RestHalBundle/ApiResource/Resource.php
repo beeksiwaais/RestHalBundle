@@ -26,12 +26,11 @@ abstract class Resource implements ResourceInterface
     public function addLink($rel, $route, array $routeParams = array(), array $attributes = array())
     {
         $generatedRoute = $this->generate($route, $routeParams);
-        $methods = $this->router->getRouteCollection()->get($route)->getMethods();
         $this->hal->addLink(
             $rel,
             $generatedRoute,
             null,
-            array_merge($attributes, array('method' => reset($methods)))
+            $attributes
         );
 
         return $this;
