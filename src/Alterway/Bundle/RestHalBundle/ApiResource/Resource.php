@@ -2,20 +2,12 @@
 
 namespace Alterway\Bundle\RestHalBundle\ApiResource;
 
-use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\RouterInterface;
 
 abstract class Resource implements ResourceInterface
 {
-    /**
-     * @var ProxyResource
-     */
-    protected $hal;
-
-    /**
-     * @var RouterInterface
-     */
-    protected $router;
+    protected ProxyResource $hal;
+    protected RouterInterface $router;
 
     public function __construct(RouterInterface $router)
     {
@@ -23,39 +15,38 @@ abstract class Resource implements ResourceInterface
         $this->hal = new ProxyResource();
     }
 
-    public function addLink($rel, $route, array $routeParams = array(), array $attributes = array())
+    public function addLink($rel, $route, array $routeParams = array(), array $attributes = array()): self
     {
         $generatedRoute = $this->generate($route, $routeParams);
         $this->hal->addLink(
             $rel,
             $generatedRoute,
-            null,
             $attributes
         );
 
         return $this;
     }
 
-    public function addResource($rel, ResourceInterface $resource = null)
+    public function addResource($rel, ?ResourceInterface $resource = null): self
     {
         $this->hal->addResource($rel, $resource->getHal());
         return $this;
     }
 
-    public function addSingleResource($rel, ResourceInterface $resource = null)
+    public function addSingleResource($rel, ?ResourceInterface $resource = null): self
     {
         $this->hal->addSingleResource($rel, $resource->getHal());
         return $this;
     }
 
 
-    public function setData(array $data)
+    public function setData(array $data): self
     {
         $this->hal->setData($data);
         return $this;
     }
 
-    public function setUri($uri)
+    public function setUri($uri): self
     {
         $this->hal->setUri($uri);
         return $this;

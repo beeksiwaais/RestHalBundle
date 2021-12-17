@@ -7,7 +7,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class HalResponse extends Response implements HalResponseInterface
 {
-    private $resource;
+    private ResourceInterface $resource;
 
     public function __construct(ResourceInterface $resource, $status = 200)
     {
@@ -18,7 +18,7 @@ class HalResponse extends Response implements HalResponseInterface
         $this->resource = $resource;
     }
 
-    public function getResource()
+    public function getResource(): ResourceInterface
     {
         return $this->resource;
     }
