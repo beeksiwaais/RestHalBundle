@@ -1,15 +1,15 @@
 demo.user:
-  pattern:   /user/{id}
+  path:   /user/{id}
   defaults:  { _controller: AlterwayDemoBundle:Test:userWithoutAnnotate, _format: json }
 
 demo.user.annotate:
-  pattern:   /user/annotate/{id}
+  path:   /user/annotate/{id}
   defaults:  { _controller: AlterwayDemoBundle:Test:userWithAnnotate, _format: json }
 
 demo.user.detail:
-  pattern:   /user/{id}
+  path:   /user/{id}
   defaults:  { _controller: AlterwayDemoBundle:Test:userWithAnnotate, _format: json }
 
 demo.user.search:
-  pattern:   /user/{id}/search
+  path:   /user/{id}/search
   defaults:  { _controller: AlterwayDemoBundle:Test:userWithAnnotate, _format: json }

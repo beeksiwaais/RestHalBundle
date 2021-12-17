@@ -12,14 +12,13 @@ use Symfony\Component\Config\Definition\ConfigurationInterface;
  */
 class Configuration implements ConfigurationInterface
 {
-
     /**
      * {@inheritDoc}
      */
-    public function getConfigTreeBuilder()
+    public function getConfigTreeBuilder(): TreeBuilder
     {
-        $treeBuilder = new TreeBuilder();
-        $rootNode = $treeBuilder->root('aw_rest_hal');
+        $treeBuilder = new TreeBuilder('aw_rest_hal');
+        $rootNode = $treeBuilder->getRootNode();
         $rootNode
             ->children()
                 ->scalarNode('format')
@@ -30,5 +29,4 @@ class Configuration implements ConfigurationInterface
         
         return $treeBuilder;
     }
-
 }

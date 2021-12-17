@@ -1,20 +1,12 @@
-# RestHalBundle
+#  RestHalBundle
 
-Bundle to manage [Hal API](http://stateless.co/hal_specification.html) with Symfony2.
+Bundle to manage [Hal API](http://stateless.co/hal_specification.html) with Symfony.
 
-## Installation
+## Installation
 
-Edit your `composer.json`:
+Add the bundle to your composer.json:
 
-```json
-"require": {
-    "alterway/rest-hal-bundle" : "master"
-}
-```
-
-And run Composer:
-
-    php composer.phar update alterway/rest-hal-bundle
+    composer require alterway/rest-hal-bundle
 
 Add the following line at the end of your `autoload.php`:
 
@@ -127,7 +119,7 @@ Run Behat:
 
 ## Copyright
 
-Copyright (c) 2013 La Ruche Qui Dit Oui!. See LICENSE for details.
+Copyright (c) 2021 La Ruche Qui Dit Oui!. See LICENSE for details.
 
 ##  Contributors
 

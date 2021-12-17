@@ -7,27 +7,10 @@ use Nocarrier\Hal;
 
 class ProxyResource extends Hal
 {
-
-    public function setData(array $array)
-    {
-        $this->data = $array;
-        return $this;
-    }
-
-    public function setUri($uri)
-    {
-        $this->uri = $uri;
-        return $this;
-    }
-
     /**
      * Add an embedded resource, identified by $rel and represented by $resource.
-     *
-     * @param string $rel
-     * @param Hal $resource
-     * @return ProxyResource
      */
-    public function addSingleResource($rel, Hal $resource = null)
+    public function addSingleResource(string $rel, ?Hal $resource = null): ProxyResource
     {
         $this->resources[$rel] = $resource;
         return $this;
@@ -35,13 +18,10 @@ class ProxyResource extends Hal
 
     /**
      * Return the current object in a application/hal+json format (links and resources)
-     *
-     * @param bool $pretty Enable pretty-printing
-     * @return string
      */
-    public function asJson($pretty=false)
+    public function asJson($pretty = false, $encode = true)
     {
         $renderer = new ProxyRenderer();
-        return $renderer->render($this, $pretty);
+        return $renderer->render($this, $pretty, $encode);
     }
 }
