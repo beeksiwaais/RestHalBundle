@@ -4,13 +4,25 @@ namespace Alterway\DemoBundle\Entity;
 
 class User
 {
+    private int $id;
+    private string $name;
+    private int $age;
 
-    private $name;
-    private $age;
-
-    function __construct($name = 'Jeff')
+    public function __construct(int $id, ?string $name = 'Jeff', ?int $age = 34)
     {
+        $this->id = $id;
         $this->name = $name;
+        $this->age = $age;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function setId(int $id): void
+    {
+        $this->id = $id;
     }
 
     public function getName()
@@ -18,10 +30,9 @@ class User
         return $this->name;
     }
 
-    public function setName($name)
+    public function setName(string $name): void
     {
         $this->name = $name;
-        return $this;
     }
 
     public function getAge()
@@ -29,10 +40,10 @@ class User
         return $this->age;
     }
 
-    public function setAge($age)
+    public function setAge(int $age): void
     {
         $this->age = $age;
-        return $this;
     }
+
 
 }

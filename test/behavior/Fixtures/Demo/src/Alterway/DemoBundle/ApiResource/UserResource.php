@@ -8,6 +8,7 @@ use Symfony\Component\Routing\RouterInterface;
 
 class UserResource extends Resource
 {
+    private User $user;
 
     public function __construct(RouterInterface $router, User $user)
     {
@@ -17,12 +18,12 @@ class UserResource extends Resource
 
     protected function prepare()
     {
-        $this->addLink('detail', 'demo.user.detail', array('id' => 1));
-        $this->addLink('search', 'demo.user.search', array('id' => 1));
+        $this->addLink('detail', 'demo.user.detail', array('id' => $this->user->getId()));
+        $this->addLink('search', 'demo.user.search', array('id' => $this->user->getId()));
     }
 
     protected function generateUri()
     {
-        return $this->router->generate('demo.user', array('id' => 1));
+        return $this->router->generate('demo.user', array('id' => $this->user->getId()));
     }
 }

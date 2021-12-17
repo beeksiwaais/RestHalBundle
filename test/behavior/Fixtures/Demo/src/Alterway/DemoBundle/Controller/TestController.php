@@ -17,13 +17,13 @@ class TestController extends Controller
      */
     public function userWithAnnotateAction(Request $request)
     {
-        $user = new User;
+        $user = new User(1);
         return new UserResource($this->get('router'), $user);
     }
 
     public function userWithoutAnnotateAction(Request $request)
     {
-        $user = new User;
+        $user = new User(1);
 
         $resource = new UserResource($this->get('router'), $user);
         return new HalResponse($resource, 200);

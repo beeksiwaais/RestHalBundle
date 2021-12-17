@@ -13,11 +13,10 @@ class ProxyRenderer extends HalJsonRenderer
      * @param mixed $resources
      * @return array
      */
-    protected function resourcesForJson($resources)
+    protected function resourcesForJson($resources): array
     {
         if(!is_array($resources)) {
             return $this->arrayForJson($resources);
-
         }
 
         return parent::resourcesForJson($resources);
@@ -26,15 +25,15 @@ class ProxyRenderer extends HalJsonRenderer
     /**
      * @inheritdoc
      */
-    protected function arrayForJson(Hal $resource = null)
+    protected function arrayForJson(?Hal $resource = null): array
     {
-        if ($resource == null) {
+        if ($resource === null) {
             return array();
         }
         $data = $resource->getData();
         $data = $this->stripAttributeMarker($data);
         if ($resource->getUri()) {
-            $data['_links'] = $this->linksForJson($resource->getUri(), $resource->getLinks());
+            $data['_links'] = $this->linksForJson($resource->getUri(), $resource->getLinks(), $resource->getArrayLinkRels());
         }
         foreach($resource->getResources() as $rel => $resources) {
             $data[$rel] = $this->resourcesForJson($resources);
