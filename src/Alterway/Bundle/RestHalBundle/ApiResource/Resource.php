@@ -29,7 +29,8 @@ abstract class Resource implements ResourceInterface
 
     public function addResource($rel, ?ResourceInterface $resource = null): self
     {
-        $this->hal->addResource($rel, $resource->getHal());
+        $hal = $resource ? $resource->getHal(): null;
+        $this->hal->addResource($rel, $hal);
         return $this;
     }
 
