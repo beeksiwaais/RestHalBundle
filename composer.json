@@ -4,24 +4,33 @@
     "type": "symfony-bundle",
     "license": "MIT",
     "autoload": {
-        "psr-0": {
+        "psr-4": {
             "Alterway\\Bundle\\RestHalBundle": "src/"
         }
     },
     "require": {
-        "php": "^7.4",
-        "symfony/symfony": "~4.4",
-        "sensio/framework-extra-bundle": "v6.1.4",
+        "php": "^8.3",
+        "symfony/symfony": "~7.0",
         "nocarrier/hal": "~0.9"
     },
     "require-dev": {
-        "behat/behat": ">=3.8",
-        "kriswallsmith/buzz": ">=0.5",
-        "phpunit/phpunit": "~9.5",
-        "behat/symfony2-extension": "*@stable",
-        "behat/mink-extension": "*",
-        "behat/mink-browserkit-driver": "*",
+        "behat/behat": ">=3.14",
+        "kriswallsmith/buzz": ">=1.2",
+        "phpunit/phpunit": "~11.1",
+        "friends-of-behat/symfony-extension": "*@stable",
+        "friends-of-behat/mink-extension": "*",
+        "friends-of-behat/mink-browserkit-driver": "*",
         "behat/gherkin": "@dev"
     },
-    "minimum-stability": "stable"
+    "minimum-stability": "stable",
+    "scripts": {
+        "post-install-cmd": [
+            "@auto-scripts",
+            "Alterway\\Bundle\\RestHalBundle\\Composer\\ScriptHandler::registerLoader"
+        ],
+        "post-update-cmd": [
+            "@auto-scripts",
+            "Alterway\\Bundle\\RestHalBundle\\Composer\\ScriptHandler::registerLoader"
+        ]
+    }
 }

@@ -2,3 +2,7 @@ services:
     Alterway\Bundle\RestHalBundle\EventListener\ResourceListener:
         tags:
             - { name: kernel.event_listener, event: kernel.view, method: onKernelView }
+
+    Alterway\Bundle\RestHalBundle\ApiResource\ProxyResourceInterface:
+        alias: Alterway\Bundle\RestHalBundle\ApiResource\ProxyResource
+        shared: false
