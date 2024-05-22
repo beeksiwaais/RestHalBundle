@@ -9,9 +9,8 @@
         }
     },
     "require": {
-        "php": "^7.4",
-        "symfony/symfony": "~4.4",
-        "sensio/framework-extra-bundle": "v6.1.4",
+        "php": "^8.3",
+        "symfony/symfony": "~7.0",
         "nocarrier/hal": "~0.9"
     },
     "require-dev": {

@@ -2,14 +2,13 @@
 
 namespace Alterway\Bundle\RestHalBundle\Controller\Annotations;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\ConfigurationInterface;
-
-/**
- * @Annotation
- */
-class Hal implements ConfigurationInterface
+#[\Attribute(\Attribute::TARGET_CLASS | \Attribute::TARGET_METHOD)]
+final class Hal
 {
-    public int $code = 200;
+    public function __construct(
+        int $code = 200
+    ) {
+    }
 
     public function getAliasName(): string
     {

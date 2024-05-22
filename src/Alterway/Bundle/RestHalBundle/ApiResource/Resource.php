@@ -6,13 +6,10 @@ use Symfony\Component\Routing\RouterInterface;
 
 abstract class Resource implements ResourceInterface
 {
-    protected ProxyResource $hal;
-    protected RouterInterface $router;
-
-    public function __construct(RouterInterface $router)
-    {
-        $this->router = $router;
-        $this->hal = new ProxyResource();
+    public function __construct(
+        protected RouterInterface $router,
+        protected ProxyResourceInterface $hal,
+    ) {
     }
 
     public function addLink($rel, $route, array $routeParams = array(), array $attributes = array()): self
