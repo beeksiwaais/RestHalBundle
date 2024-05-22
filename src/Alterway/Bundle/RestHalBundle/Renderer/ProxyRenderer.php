@@ -35,7 +35,11 @@ class ProxyRenderer extends HalJsonRenderer
         if ($resource->getUri()) {
             $data['_links'] = $this->linksForJson($resource->getUri(), $resource->getLinks(), $resource->getArrayLinkRels());
         }
-        foreach($resource->getResources() as $rel => $resources) {
+        foreach ($resource->getResources() as $rel => $resources) {
+            if (count($resources) === 1 && !in_array($rel, $resource->getArrayResourceRels())) {
+                $resources = $resources[0];
+            }
+
             $data[$rel] = $this->resourcesForJson($resources);
         }
         return $data;
